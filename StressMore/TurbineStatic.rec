@@ -1,0 +1,31 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].materials['GH4169'].density.setValues(table=((
+    7.979829917769196e-09, ), ))
+mdb.models['Model-1'].materials['GH4169'].elastic.setValues(table=((
+    162046.5836757147, 0.32), ))
+mdb.models['Model-1'].loads['CENTRIF-1'].setValues(magnitude=
+    1878.7636977694551)
+mdb.models['Model-1'].predefinedFields['Predefined Field-2'].setValues(
+    fileName=
+    'C:\\Users\\CJY\\Desktop\\turbine\\StressMore\\TurbineThermal.odb')
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='TurbineStatic', nodalOutputPrecision=
+    SINGLE, numCpus=8, numDomains=8, numGPUs=0, queue=None, resultsFormat=ODB, 
+    scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['TurbineStatic'].submit(consistencyChecking=OFF)
+mdb.jobs['TurbineStatic'].waitForCompletion()
